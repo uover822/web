@@ -1,0 +1,23 @@
+let Seneca = require('seneca')
+let app = require('../web.js')
+Seneca({tag: 'web', timeout: 60000})
+/*
+  .use('jsonfile-store', {folder: '/opt/data'})
+  .use('user')
+  .use('zipkin-tracer', {host: 'zipkin', sampling: 1})
+  .use('statsd', {host: 'stats'})
+*/
+  .use('promisify')
+  .use('entity')
+  .listen(8020)
+  .client({pin:'role:associate', host:'associate', port:8005})
+  .client({pin:'role:descriptor', host:'descriptor', port:8015})
+  .client({pin:'role:mediator', host:'mediator', port:8025})
+  .client({pin:'role:properties', host:'properties', port:8030})
+  .client({pin:'role:reason', host:'reason', port:8035})
+  .client({pin:'role:relation', host:'relation', port:8040})
+  .client({pin:'role:store', host:'store', port:8045})
+  .ready(function(){
+    let server = app({seneca: this})
+    //this.log.info(server.info)
+  })

@@ -1,0 +1,77 @@
+<head>
+<meta charset="UTF-8">
+<style type='text/css'>
+body {
+	font-family: verdana;
+	font-size: 1em;
+  background-color: midnightblue;
+}
+
+input,textarea,pre {
+	font-family: verdana;
+	font-size: 15px;
+	font-family: inherit;
+}
+
+#blogText,#blogText_field {
+	width: 25px;
+  fill: green;
+  
+  background-color: lightgrey;
+}
+
+</style>
+</head>
+<body onload="init()">
+  <script src="res/underscore/underscore-min.js"></script>
+  <script src="res/jquery/jquery.min.js"></script>
+  <script src="res/bootstrap/js/bootstrap.min.js"></script>
+  <script src="res/moment/moment.min.js"></script>
+  <script src="util.js"></script>
+  <!--
+      <script src="app.js"></script>
+  -->
+  <script src="io/DataGraph.js"></script>
+  <script src="io/HTTP.js"></script>
+  <script src="io/XMLTreeLoader.js"></script>
+  <script src="layout/graph/Instance.js"></script>
+  <script src="layout/graph/MyForceDirectedLayout.js"></script>
+  <script src="layout/graph/SnowflakeLayout.js"></script>
+  <script src="layout/view/HTMLGraphView.js"></script>
+  <script src="layout/view/MyGraphView.js"></script>
+  <script src="layout/view/SVGGraphView.js"></script>
+  <script src="myreach.js"></script>
+  <script src="physics/MyMagnet.js"></script>
+  <script src="physics/MyParticleModel.js"></script>
+  <script src="physics/MyRungeKuttaIntegrator.js"></script>
+  <script src="physics/MyParticle.js"></script>
+  <script src="physics/MySpring.js"></script>
+  <script src="util/EventHandler.js"></script>
+  <script src="util/MyTimer.js"></script>
+  <script src="util/cycle.js"></script>
+  <div style='position:absolute;bottom:10px;right:10px;'>
+    <form method="get" action="/logout">
+      <input type="submit" value="Logout">
+    </form>
+  </div>
+  <div id="properties" style="display: none;">
+    <table width="350" border="1" cellspacing="0" cellpadding="0"
+	         id="mytable" style="background-color: #B8BFD8;">
+	    <tr>
+		    <th colspan="4"><input type="button" name="Button"
+			                         value="Add row" onclick="addRow('mytable')"/><input type="submit"
+			                         value="Submit" onclick="submitTable('properties')"/><input
+			type="button" value="Cancel" onclick="cancelTable('properties')"/></th>
+	    </tr>
+    </table>
+  </div>
+
+  <span id='options' style='display: none;'>
+    <select id='optionsSelect' size='3'>
+      <option>add</option>
+      <option>instantiate</option>
+      <option>reason</option>
+    </select>
+  </span>
+  <span id='blogText' class='editText' style='display:none;'>describes</span>
+</body>
